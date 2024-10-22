@@ -121,3 +121,13 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+prometheus:
+  enabled: true
+  image: prom/prometheus:latest
+  config: |
+    scrape_interval: 15s
+
+grafana:
+  adminPassword: "admin"
+  enabled: true
