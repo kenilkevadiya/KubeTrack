@@ -17,3 +17,15 @@ spec:
           image: grafana/grafana:latest
           ports:
             - containerPort: 3000
+          volumeMounts:
+            - name: grafana-dashboards
+              mountPath: /var/lib/grafana/dashboards
+          env:
+            - name: GF_DASHBOARDS_JSON_ENABLED
+              value: "true"
+            - name: GF_DASHBOARDS_PATH
+              value: "/var/lib/grafana/dashboards"
+      volumes:
+        - name: grafana-dashboards
+          configMap:
+            name: grafana-dashboards
